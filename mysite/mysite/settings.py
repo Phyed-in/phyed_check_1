@@ -165,7 +165,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'Phyed-course-master/build/static'),
     os.path.join(BASE_DIR,'PHYED_JOBS-master/build/static')
 ]
-STATIC_ROOT= BASE_DIR / "staticfiles"
+STATIC_ROOT= "/staticfiles/"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
