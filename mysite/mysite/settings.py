@@ -164,6 +164,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'Phyed-course-master/build/static'),
     os.path.join(BASE_DIR,'PHYED_JOBS-master/build/static')
 ]
+STATIC_ROOT="/staticfiles/"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
