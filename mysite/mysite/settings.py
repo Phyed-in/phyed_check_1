@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w26avkm1ud&y&bv&pw^1v$g4ijjlk@$mle4@xo9=x%v3wqtgkd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["phyed.up.railway.app"]
+# DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -72,7 +72,7 @@ SOCIAL_ACCOUNT_PROVIDERS={
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -160,14 +160,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'mysite/static',
-    os.path.join(BASE_DIR,'Phyed-course-master/build/static'),
-    os.path.join(BASE_DIR,'PHYED_JOBS-master/build/static')
-]
-STATIC_ROOT= "/staticfiles/"
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'mysite/static',
+#     os.path.join(BASE_DIR,'Phyed-course-master/build/static'),
+#     os.path.join(BASE_DIR,'PHYED_JOBS-master/build/static')
+# ]
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT=BASE_DIR/'staticfiles'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -231,3 +230,4 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 
 ACCOUNT_SESSION_REMEMBER = True
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
